@@ -1,0 +1,13 @@
+dbt_talk_postgres:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: dbt_talk
+      password: dbt_talk_101
+      port: 5433
+      dbname: dbt_talk_demo
+      schema: dbt
+      threads: 4
+      keepalives_idle: 0
