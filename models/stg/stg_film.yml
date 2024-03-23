@@ -1,0 +1,56 @@
+models:
+  - name: stg_film    
+    config:
+      on_schema_change: fail    
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [film_id]
+    columns:
+      - name: film_id
+        data_type: integer
+      - name: title 
+        data_type: varchar(255)
+        constraints:
+          - type: not_null
+      - name: description
+        data_type: text
+      - name: release_year 
+        data_type: integer
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "release_year >= 1900"
+      - name: language_id
+        data_type: smallint
+        constraints:
+          - type: not_null
+          - type: foreign_key
+            expression: stg.stg_language (language_id)
+      - name: rental_duration 
+        data_type: smallint
+        constraints:
+          - type: not_null
+          - type: check
+            expression: "rental_duration >= 0"
+      - name: rental_rate 
+        data_type: numeric(4,2)
+        constraints:
+          - type: not_null
+      - name: length 
+        data_type: smallint
+        constraints:
+          - type: not_null
+      - name: replacement_cost 
+        data_type: numeric(5,2)
+        constraints:
+          - type: not_null
+      - name: rating 
+        data_type: varchar(10)
+        constraints:
+          - type: not_null
+      - name: last_update 
+        data_type: timestamp
+        constraints:
+          - type: not_null

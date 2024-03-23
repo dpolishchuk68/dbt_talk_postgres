@@ -23,6 +23,16 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+dispatch:
+  - macro_namespace: datavault4dbt
+    search_order: ['dbt_talk_postgres', 'datavault4dbt']
+
+vars:  
+  #Hash Configuration
+  datavault4dbt.hash_datatype: 'VARCHAR'
+
+  #Ghost Record Configuration  
+  datavault4dbt.rsrc_default_dtype: 'VARCHAR'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -32,6 +42,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_talk_postgres:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    stg:
+      +schema: stg
+    stg_dv:
+      +schema: stg
+    raw_vault:
+      +schema: raw_vault

@@ -1,0 +1,21 @@
+models:
+  - name: stg_language   
+    config:
+      on_schema_change: fail
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [language_id]
+        name: pk_stg_language
+    columns:
+      - name: language_id
+        data_type: integer
+      - name: name 
+        data_type: varchar(20)
+        constraints:
+          - type: not_null
+      - name: last_update 
+        data_type: timestamp
+        constraints:
+          - type: not_null

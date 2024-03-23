@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: dvdrental
+    database: dbt_talk_demo
+    schema: dvdrental
+    tables:
+      - name: actor
+      - name: film
+      - name: film_actor
+      - name: language

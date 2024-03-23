@@ -1,0 +1,23 @@
+models:
+  - name: stg_film_actor    
+    config:
+      on_schema_change: fail
+      contract:
+        enforced: true
+    constraints:
+      - type: unique
+        columns: [actor_id, film_id]
+        name: unique_stg_film_actor
+    columns:
+      - name: actor_id
+        data_type: integer
+        constraints:
+          - type: not_null
+      - name: film_id
+        data_type: integer
+        constraints:
+          - type: not_null
+      - name: last_update 
+        data_type: timestamp
+        constraints:
+          - type: not_null
