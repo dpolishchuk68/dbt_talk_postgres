@@ -7,7 +7,6 @@ models:
     constraints:
       - type: primary_key
         columns: [language_id]
-        name: pk_stg_language
     columns:
       - name: language_id
         data_type: integer

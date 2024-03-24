@@ -7,7 +7,6 @@ models:
     constraints:
       - type: unique
         columns: [actor_id, film_id]
-        name: unique_stg_film_actor
     columns:
       - name: actor_id
         data_type: integer
