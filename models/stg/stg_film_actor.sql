@@ -1,8 +1,8 @@
 {{ config(materialized='incremental') }}
 
 SELECT
-     actor_id
-    ,film_id
+     actor_id::integer as actor_id
+    ,film_id::integer as film_id
     ,last_update
 FROM {{ source('dvdrental', 'film_actor') }}
 {% if is_incremental() %}
