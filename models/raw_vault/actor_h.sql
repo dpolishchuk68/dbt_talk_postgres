@@ -1,4 +1,7 @@
-{{ config(materialized='incremental') }}
+{{ config(
+    materialized='incremental',
+    post_hook='{{ create_index_on_hub(this) }}'
+)}}
 
 {%- set yaml_metadata -%}
 hashkey: 'hk_actor_h'
