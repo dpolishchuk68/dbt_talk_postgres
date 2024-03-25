@@ -1,4 +1,4 @@
-{% macro create_index(index_name, table, columns, unique) -%}
+{% macro create_index(index_name, table, columns, unique, dry_run=false) -%}
     
     {%- set ns=namespace(column_list_print="") -%}
     {%- if columns is string -%}
@@ -16,6 +16,8 @@
     {%- endset -%}
 
     {%- do log(query, info=true) -%}
-    {%- do run_query('BEGIN;\n'~ query ~ '\nCOMMIT;') -%}
+    {%- if not dry_run -%}
+        {%- do run_query('BEGIN;\n'~ query ~ '\nCOMMIT;') -%}
+    {%- endif -%}
 
 {%- endmacro %}

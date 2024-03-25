@@ -48,3 +48,4 @@ models:
       +schema: stg
     raw_vault:
       +schema: raw_vault
+      +post-hook: '{{ create_index_on_data_vault_entity(this) }}'
