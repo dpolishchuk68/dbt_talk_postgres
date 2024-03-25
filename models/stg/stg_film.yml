@@ -27,7 +27,7 @@ models:
         constraints:
           - type: not_null
           - type: foreign_key
-            expression: stg.stg_language (language_id)
+            expression: dvdrental.language (language_id)
       - name: rental_duration 
         data_type: smallint
         constraints:
