@@ -10,7 +10,7 @@
     {%- elif dv_entity_type == 'satellite' -%}
         {%- do create_index_on_satellite(table) -%}
     {%- else -%}
-        {%- do log('Unknown data vault entity type', info=true) -%}
+        {%- do log(table.name ~ ' - unknown data vault entity type', info=true) -%}
     {%- endif -%}
 
 {%- endif -%}
