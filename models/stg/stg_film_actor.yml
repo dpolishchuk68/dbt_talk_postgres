@@ -1,5 +1,5 @@
 models:
-  - name: stg_film_actor    
+  - name: stg_film_actor
     config:
       on_schema_change: fail
       contract:

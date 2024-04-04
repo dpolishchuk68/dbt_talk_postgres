@@ -1,12 +1,12 @@
 models:
-  - name: stg_film    
+  - name: stg_film
     config:
       on_schema_change: fail    
       contract:
         enforced: true
     constraints:
       - type: primary_key
-        columns: [film_id]
+        columns: [film_id] #
     columns:
       - name: film_id
         data_type: integer
@@ -14,25 +14,26 @@ models:
         data_type: varchar(255)
         constraints:
           - type: not_null
+          - type: unique
       - name: description
         data_type: text
       - name: release_year 
         data_type: integer
         constraints:
-          - type: not_null
-          - type: check
+          - type: not_null #
+          - type: check #
             expression: "release_year >= 1900"
       - name: language_id
         data_type: smallint
         constraints:
           - type: not_null
-          - type: foreign_key
+          - type: foreign_key #
             expression: dvdrental.language (language_id)
       - name: rental_duration 
         data_type: smallint
         constraints:
           - type: not_null
-          - type: check
+          - type: check #
             expression: "rental_duration >= 0"
       - name: rental_rate 
         data_type: numeric(4,2)

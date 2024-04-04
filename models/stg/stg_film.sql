@@ -23,11 +23,11 @@ from {{ source('dvdrental', 'film') }}
 where last_update >
         ( select coalesce(max(last_update), '1900-01-01') from {{ this }} )
 {% endif %}
-/*
+{#
 union all
 select
      9999::integer as film_id
-    ,'Test film'::varchar(255) title
+    ,'Chamber Italian'::varchar(255) title -- duplicate name
     ,'Test description'::text description
     ,1899::integer release_year --<=1900
     ,6::smallint as language_id -- from 1 to 6
@@ -37,4 +37,4 @@ select
     ,99.99::numeric(5,2) as replacement_cost
     ,'TEST-18'::varchar(10) as rating
     ,current_timestamp::timestamp as last_update
-  */
+#}
